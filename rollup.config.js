@@ -32,5 +32,5 @@ export default {
         'Access-Control-Allow-Origin': '*',
       },
     }),
-  ],
+  ].filter(Boolean),
 };
