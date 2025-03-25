@@ -2,7 +2,7 @@
 
 A custom Lovelace card for Home Assistant that works with the [Ember Mug Integration](https://github.com/sopelj/hass_ember_mug) to provide a rich interface for monitoring and controlling your Ember Mug.
 
-![Ember Mug Card Preview](ember-mug-card-examples.png)
+![Ember Mug Card Preview](/images/ember-mug-card-examples.png)
 
 ## Features
 
