@@ -307,9 +307,9 @@ export class EmberMugVisualization extends LitElement {
           <!-- Temperature Display matched to control panel size -->
           <text 
             class="temperature-text" 
-            x="47" 
+            x="45" 
             y="60" 
-            font-size="${Math.min(Math.max(14, 14 * scaleFactor), 18)}"
+            font-size="${Math.min(Math.max(14, 14 * scaleFactor), 16)}"
           >
             ${temperature > 0
         ? `${Math.round(temperature)}°${temperatureUnit}`
