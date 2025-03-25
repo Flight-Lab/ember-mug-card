@@ -2,6 +2,5 @@
   "name": "Ember Mug Card",
   "render_readme": true,
   "filename": "ember-mug-card.js",
-  "content_in_root": true,
   "releases_only": true,
 }
