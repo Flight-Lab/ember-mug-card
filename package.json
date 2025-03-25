@@ -1,6 +1,7 @@
 {
   "name": "ember-mug-card",
   "version": "1.0.0",
+  "type": "module",
   "description": "A custom card for visualizing and controlling Ember Mug devices in Home Assistant",
   "main": "ember-mug-card.js",
   "scripts": {
