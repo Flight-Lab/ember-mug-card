@@ -1,4 +1,6 @@
 # Ember Mug Card
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 A custom Lovelace card for Home Assistant that works with the [Ember Mug Integration](https://github.com/sopelj/hass_ember_mug) to provide a rich interface for monitoring and controlling your Ember Mug.
 
@@ -28,6 +30,8 @@ A custom Lovelace card for Home Assistant that works with the [Ember Mug Integra
    - Select Category: "Dashboard"
 3. Click "Install" next to "Ember Mug Card" in the HACS store
 4. Refresh your browser cache
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Flight-Lab&repository=ember-mug-card&category=plugin)
 
 ### Manual Installation
 
