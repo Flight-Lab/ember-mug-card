@@ -6,19 +6,21 @@ on:
   pull_request:
     branches: [ main ]
   release:
-    types: [created, edited]
+    types: [published]
   workflow_dispatch:
 
-# Add explicit permissions
 permissions:
   contents: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -34,18 +36,31 @@ jobs:
           mkdir -p dist
           npm run build
           
-      # Only for releases
+      # Copy the built file to root for releases
       - name: Prepare release asset
         if: github.event_name == 'release'
         run: |
           cp dist/ember-mug-card.js ./ember-mug-card.js
           
-      - name: Release
+      # Use GitHub CLI to upload asset
+      - name: Upload release asset
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            ember-mug-card.js
-          body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Install GitHub CLI
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install gh
+          
+          # Get release tag
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          
+          # Authenticate with GITHUB_TOKEN
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          
+          # Upload the file to the release
+          gh release upload "$TAG_NAME" ember-mug-card.js --clobber
+          
+          # Get changelog content and update release notes
+          CHANGELOG=$(cat CHANGELOG.md)
+          gh release edit "$TAG_NAME" --notes "$CHANGELOG"
