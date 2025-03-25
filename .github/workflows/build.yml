@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   release:
-    types: [created]
+    types: [created, edited]
   workflow_dispatch:
 
 jobs:
@@ -30,49 +30,18 @@ jobs:
           mkdir -p dist
           npm run build
           
-      # Only run for releases
+      # Only for releases
       - name: Prepare release asset
         if: github.event_name == 'release'
         run: |
           cp dist/ember-mug-card.js ./ember-mug-card.js
           
-      - name: Upload release asset
+      - name: Release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v1
         with:
-          files: ember-mug-card.js
-          body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        if: success()
-        with:
-          name: ember-mug-card
-          path: dist/ember-mug-card.js
-          
-  release:
-    needs: build
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: ember-mug-card
-          path: dist
-          
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
           files: |
-            dist/ember-mug-card.js
+            ember-mug-card.js
           body_path: CHANGELOG.md
-          draft: false
-          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
