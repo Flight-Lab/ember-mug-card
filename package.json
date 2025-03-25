@@ -1,0 +1,39 @@
+{
+  "name": "ember-mug-card",
+  "version": "1.0.0",
+  "description": "A custom card for visualizing and controlling Ember Mug devices in Home Assistant",
+  "main": "ember-mug-card.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "lint": "eslint src/*.js",
+    "lint:fix": "eslint src/*.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flight-lab/ember-mug-card.git"
+  },
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "lovelace",
+    "ember-mug",
+    "custom-card"
+  ],
+  "author": "Flab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flight-lab/ember-mug-card/issues"
+  },
+  "homepage": "https://github.com/flight-lab/ember-mug-card#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^8.55.0",
+    "rollup": "^4.6.1",
+    "rollup-plugin-serve": "^2.0.2"
+  }
+}
