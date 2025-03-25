@@ -24,35 +24,6 @@ jobs:
         run: npm ci
       
       - name: Build
-        run: npm run build
-        
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ember-mug-card
-          path: dist/ember-mug-card.js
-          
-  release:
-    needs: build
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ember-mug-card
-          path: dist
-          
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            dist/ember-mug-card.js
-          body_path: CHANGELOG.md
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p dist
+          npm run build
