@@ -2,4 +2,5 @@
   "name": "Ember Mug Card",
   "render_readme": true,
   "filename": "dist/ember-mug-card.js",
+  "content_in_root": false,
 }
