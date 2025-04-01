@@ -26,7 +26,7 @@ A custom Lovelace card for Home Assistant that works with the [Ember Mug Integra
    - Go to HACS → Frontend
    - Click on the three dots in the top right corner
    - Select "Custom repositories"
-   - Add the URL `https://github.com/yourusername/ember-mug-card` (replace with actual repository URL)
+   - Add the URL `https://github.com/Flight-Lab/ember-mug-card`
    - Select Category: "Dashboard"
 3. Click "Install" next to "Ember Mug Card" in the HACS store
 4. Refresh your browser cache
